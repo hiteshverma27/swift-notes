@@ -1,0 +1,16 @@
+.login-div{
+    align-items: center;
+    overflow-y: auto;
+    min-height: max-content;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(5px);
+    /* background-color: var(--dark-mode-color); */
+    color: white;
+}
+
+@media screen and (max-width: 425px){
+    .login-div{
+        width: 90%;
+        height: max-content;
+    }
+  }

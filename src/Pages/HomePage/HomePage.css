@@ -1,0 +1,13 @@
+.app-navigation{
+    position: fixed;
+    left: 0;
+    height: max-content;
+    top: 66px;
+    align-items: flex-start;
+}
+.user-badge{
+    position: fixed;
+    left: 0;
+    height: max-content;
+    bottom: 0;
+}
