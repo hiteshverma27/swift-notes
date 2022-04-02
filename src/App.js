@@ -1,42 +1,26 @@
 import "./App.css";
-import logo from "./logo.png";
+import Footer from "./Components/Footer/Footer";
+import LandingPage from "./Pages/LandingPage/LandingPage";
+import Navigation from "./Components/Navigation/Navigation";
+import MockmanEs from "mockman-js";
+import Login from "./Pages/Login/Login";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./Pages/HomePage/HomePage";
+import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/mock" element={<MockmanEs />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
