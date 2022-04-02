@@ -17,7 +17,6 @@ function Login() {
         password: "adarshBalika123",
       });
       // alert("logged in successfully");
-      console.log(userData.data.encodedToken);
       setToken(userData.data.encodedToken);
       navigate("/home");
     } catch (error) {
