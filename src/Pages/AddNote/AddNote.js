@@ -4,6 +4,11 @@ import { useAuth } from "../../Context/AuthContext";
 import { useNote } from "../../Context/NoteContext";
 import { successToast } from "../../Utils/ToastUtils/successToast";
 import { useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import "./AddNote.css";
+import { quillModules } from "../../Utils/ReactQuillUtils/QuillModules";
+import { errorToast } from "../../Utils/ToastUtils/errorToast";
 
 function AddNote() {
   const [title, setTitle] = useState("");
@@ -15,56 +20,56 @@ function AddNote() {
 
   const navigate = useNavigate();
 
-  const saveNoteHandler = async (e) => {
+  const saveNoteHandler = (e) => {
     e.preventDefault();
-    try {
-      const notes = await axios.post(
-        "/api/notes",
-        { note: { title: title, note: note } },
-        {
-          headers: { authorization: token },
-        }
-      );
-      // alert("Add note successful");
-      //   console.log(notes.data.notes);
-      setSavedNotes(notes.data.notes);
-      successToast("Note added successfully");
-      setNote("");
-      setTitle("");
-    } catch (error) {
-      console.log(error);
-      successToast("Seems like you are note logged in, log in first!");
-      navigate("/login");
-    }
+    const postNote = async () => {
+      try {
+        const notes = await axios.post(
+          "/api/notes",
+          { note: { title: title, note: note } },
+          {
+            headers: { authorization: token },
+          }
+        );
+        setSavedNotes(notes.data.notes);
+        console.log(notes.data.notes);
+        successToast("Note added successfully");
+        setNote("");
+        setTitle("");
+      } catch (error) {
+        console.log(error);
+        successToast("Seems like you are note logged in, log in first!");
+        navigate("/login");
+      }
+    };
+    title === "" || note === ""
+      ? errorToast("Neither of the fields can be empty!")
+      : postNote();
   };
 
   return (
     <div className="main-content">
       <h1 className="m-2 ml-0">Add Note</h1>
-      <form>
-        <label>
-          <input
-            type={"text"}
-            placeholder={"Title"}
-            className="input m-0"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <br />
-          <textarea
-            rows="4"
-            cols="50"
-            type={"text"}
-            placeholder={"Enter note here"}
-            className="input m-0"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-          />
-        </label>
-        <button className="btn-primary-confirm" onClick={saveNoteHandler}>
-          Save Note
-        </button>
-      </form>
+      <label>
+        <input
+          type={"text"}
+          placeholder={"Title"}
+          className="input m-0"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </label>
+      <ReactQuill
+        placeholder="Start taking a note..."
+        theme="snow"
+        onChange={(e) => setNote(e.replaceAll(`"`, ""))}
+        value={note}
+        modules={quillModules}
+        className="quill"
+      />
+      <button className="btn-primary-confirm" onClick={saveNoteHandler}>
+        Save Note
+      </button>
     </div>
   );
 }

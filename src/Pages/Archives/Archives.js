@@ -5,9 +5,11 @@ import { useAuth } from "../../Context/AuthContext";
 import { useNote } from "../../Context/NoteContext";
 import axios from "axios";
 import { successToast } from "../../Utils/ToastUtils/successToast";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 function Archives() {
-  const { archiveNotes, setArchiveNotes } = useNote();
+  const { archiveNotes, setArchiveNotes, setSavedNotes } = useNote();
   const { token } = useAuth();
 
   const deleteArchiveNote = async (item) => {
@@ -17,6 +19,23 @@ function Archives() {
       });
       setArchiveNotes(notes.data.archives);
       successToast("Note deleted from archive");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const restoreArchive = async (item) => {
+    try {
+      const notes = await axios.post(
+        `/api/archives/restore/${item._id}`,
+        { note: { title: item.title, note: item.note } },
+        {
+          headers: { authorization: token },
+        }
+      );
+      setSavedNotes(notes.data.notes);
+      setArchiveNotes(notes.data.archives);
+      successToast("Note restored");
     } catch (error) {
       console.log(error);
     }
@@ -43,13 +62,24 @@ function Archives() {
             {archiveNotes.map((item) => (
               <div className="note-card m-2 notes-container" key={item._id}>
                 <h2>{item.title}</h2>
-                <p> {item.note}</p>
+                <ReactQuill
+                  key={item._id}
+                  theme="snow"
+                  className="quill"
+                  readOnly
+                  value={item.note}
+                />
                 <div className="flex-center-center px-2">
+                  <button className=" m-2" onClick={() => restoreArchive(item)}>
+                    <span className="material-icons icon-s4">unarchive</span>
+                  </button>
                   <button
-                    className="btn-primary-danger m-2"
+                    className="m-2"
                     onClick={() => deleteArchiveNote(item)}
                   >
-                    Delete Archive
+                    <span className="material-icons icon-s4 color-red">
+                      delete
+                    </span>
                   </button>
                 </div>
               </div>

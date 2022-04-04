@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAuth, useNote } from "../../Context";
 import { successToast } from "../../Utils/ToastUtils";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 function SavedNotes() {
   const { savedNotes, setArchiveNotes, setSavedNotes } = useNote();
   const { token } = useAuth();
@@ -42,7 +44,6 @@ function SavedNotes() {
       console.log(error);
     }
   };
-
   return (
     <>
       <SideNav />
@@ -64,24 +65,28 @@ function SavedNotes() {
         ) : (
           <div className="flex flex-wrap ">
             {savedNotes.map((item) => (
-              <div className="note-card m-2 notes-container" key={item._id}>
-                <h2>{item.title}</h2>
-                <p> {item.note}</p>
-                <div className="flex-center-center px-2">
-                  <button
-                    className="btn-primary-confirm m-2"
-                    onClick={() => archiveNoteHandler(item)}
-                  >
-                    Archive
-                  </button>
-                  <button
-                    className="btn-primary-danger m-2"
-                    onClick={() => deleteNoteHandler(item)}
-                  >
-                    Delete
-                  </button>
+              <>
+                <div className="m-2 savednote-container">
+                  <h2>{item.title}</h2>
+                  <ReactQuill
+                    key={item._id}
+                    theme="snow"
+                    className="quill"
+                    readOnly
+                    value={item.note}
+                  />
+                  <div className="flex-center-center">
+                    <button onClick={() => archiveNoteHandler(item)}>
+                      <span className="material-icons icon-s4">archive</span>
+                    </button>
+                    <button onClick={() => deleteNoteHandler(item)}>
+                      <span className="material-icons icon-s4 color-red">
+                        delete
+                      </span>
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </>
             ))}
           </div>
         )}

@@ -25,3 +25,8 @@
   border-radius: 1rem;
   padding: 1rem;
 }
+.savednote-container{
+  border: 2px solid black;
+  padding: 2rem;
+  height: max-content;
+}
