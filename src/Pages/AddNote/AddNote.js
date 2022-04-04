@@ -32,7 +32,6 @@ function AddNote() {
           }
         );
         setSavedNotes(notes.data.notes);
-        console.log(notes.data.notes);
         successToast("Note added successfully");
         setNote("");
         setTitle("");
