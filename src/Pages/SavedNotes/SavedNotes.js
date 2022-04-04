@@ -66,21 +66,26 @@ function SavedNotes() {
           <div className="flex flex-wrap ">
             {savedNotes.map((item) => (
               <>
-                <div className="m-2 savednote-container" key={item._id}>
+                <div className="m-2 savednote-container w-70vw" key={item._id}>
                   <h2>{item.title}</h2>
                   <ReactQuill
                     key={item._id}
                     theme="snow"
-                    className="quill"
                     readOnly
                     value={item.note}
                   />
                   <p>created - {item.date}</p>
                   <div className="flex-center-center">
-                    <button onClick={() => archiveNoteHandler(item)}>
+                    <button
+                      onClick={() => archiveNoteHandler(item)}
+                      title="Archive Note"
+                    >
                       <span className="material-icons icon-s4">archive</span>
                     </button>
-                    <button onClick={() => deleteNoteHandler(item)}>
+                    <button
+                      onClick={() => deleteNoteHandler(item)}
+                      title="Delete Note"
+                    >
                       <span className="material-icons icon-s4 color-red">
                         delete
                       </span>

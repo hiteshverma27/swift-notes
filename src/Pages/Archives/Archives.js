@@ -60,7 +60,7 @@ function Archives() {
         ) : (
           <div className="flex flex-wrap">
             {archiveNotes.map((item) => (
-              <div className="note-card m-2 notes-container" key={item._id}>
+              <div className="m-2 savednote-container w-70vw" key={item._id}>
                 <h2>{item.title}</h2>
                 <ReactQuill
                   key={item._id}
@@ -72,12 +72,17 @@ function Archives() {
                 <p>created - {item.date}</p>
 
                 <div className="flex-center-center px-2">
-                  <button className=" m-2" onClick={() => restoreArchive(item)}>
+                  <button
+                    className=" m-2"
+                    onClick={() => restoreArchive(item)}
+                    title="Restore Note"
+                  >
                     <span className="material-icons icon-s4">unarchive</span>
                   </button>
                   <button
                     className="m-2"
                     onClick={() => deleteArchiveNote(item)}
+                    title="Delete from archive"
                   >
                     <span className="material-icons icon-s4 color-red">
                       delete

@@ -59,7 +59,7 @@ function AddNote() {
         <input
           type={"text"}
           placeholder={"Title"}
-          className="input m-0"
+          className="input m-0 w-90per"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -70,7 +70,7 @@ function AddNote() {
         onChange={(e) => setNote(e.replaceAll(`"`, ""))}
         value={note}
         modules={quillModules}
-        className="quill"
+        className="quill w-90per"
       />
       <button className="btn-primary-confirm" onClick={saveNoteHandler}>
         Save Note

@@ -8,10 +8,10 @@
   height: calc(100vh - 6.6rem);
   color: var(--white);
   overflow-y: auto;
-  margin-left: 25rem;
+  margin-left: 25vw;
   align-items: flex-start;
   justify-content: flex-start;
-  max-width: calc(100vw - 25rem);
+  max-width: calc(100vw - 25vw);
 }
 .app-navigation{
   top: 0;
@@ -33,4 +33,7 @@
   border: 2px solid black;
   padding: 2rem;
   height: max-content;
+  word-wrap: break-word;
+  max-width: max-content;
+  min-width: 20rem;
 }
