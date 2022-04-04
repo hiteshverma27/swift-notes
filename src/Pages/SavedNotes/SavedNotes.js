@@ -66,7 +66,7 @@ function SavedNotes() {
           <div className="flex flex-wrap ">
             {savedNotes.map((item) => (
               <>
-                <div className="m-2 savednote-container">
+                <div className="m-2 savednote-container" key={item._id}>
                   <h2>{item.title}</h2>
                   <ReactQuill
                     key={item._id}
@@ -75,6 +75,7 @@ function SavedNotes() {
                     readOnly
                     value={item.note}
                   />
+                  <p>created - {item.date}</p>
                   <div className="flex-center-center">
                     <button onClick={() => archiveNoteHandler(item)}>
                       <span className="material-icons icon-s4">archive</span>

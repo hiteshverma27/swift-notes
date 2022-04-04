@@ -69,6 +69,8 @@ function Archives() {
                   readOnly
                   value={item.note}
                 />
+                <p>created - {item.date}</p>
+
                 <div className="flex-center-center px-2">
                   <button className=" m-2" onClick={() => restoreArchive(item)}>
                     <span className="material-icons icon-s4">unarchive</span>

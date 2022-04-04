@@ -26,7 +26,13 @@ function AddNote() {
       try {
         const notes = await axios.post(
           "/api/notes",
-          { note: { title: title, note: note } },
+          {
+            note: {
+              title: title,
+              note: note,
+              date: new Date(Date.now()).toLocaleString().split(","[0]),
+            },
+          },
           {
             headers: { authorization: token },
           }
@@ -47,7 +53,7 @@ function AddNote() {
   };
 
   return (
-    <div className="main-content">
+    <div className="main-conten">
       <h1 className="m-2 ml-0">Add Note</h1>
       <label>
         <input
