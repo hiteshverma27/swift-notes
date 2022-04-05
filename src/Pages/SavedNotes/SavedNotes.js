@@ -66,7 +66,11 @@ function SavedNotes() {
           <div className="flex flex-wrap ">
             {savedNotes.map((item) => (
               <>
-                <div className="m-2 savednote-container w-70vw" key={item._id}>
+                <div
+                  className="m-2 savednote-container w-70vw"
+                  key={item._id}
+                  style={{ backgroundColor: item.noteColor }}
+                >
                   <h2>{item.title}</h2>
                   <ReactQuill
                     key={item._id}

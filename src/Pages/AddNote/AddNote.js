@@ -13,6 +13,7 @@ import { errorToast } from "../../Utils/ToastUtils/errorToast";
 function AddNote() {
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
+  const [noteColor, setNoteColor] = useState();
 
   const { token } = useAuth();
 
@@ -31,6 +32,7 @@ function AddNote() {
               title: title,
               note: note,
               date: new Date(Date.now()).toLocaleString().split(","[0]),
+              noteColor: noteColor,
             },
           },
           {
@@ -66,12 +68,48 @@ function AddNote() {
       </label>
       <ReactQuill
         placeholder="Start taking a note..."
+        style={{ backgroundColor: noteColor }}
         theme="snow"
         onChange={(e) => setNote(e.replaceAll(`"`, ""))}
         value={note}
         modules={quillModules}
         className="quill w-90per"
       />
+      <label>
+        <input
+          type={"checkbox"}
+          value={"work"}
+          onClick={(e) => console.log(e.target.checked)}
+        />
+        Work
+      </label>
+      <div className="flex-wrap flex">
+        <div
+          className="note-color-selector m-1"
+          onClick={() => setNoteColor("#5CCEFF")}
+          style={{ backgroundColor: "#5CCEFF" }}
+        ></div>
+        <div
+          className="note-color-selector m-1"
+          onClick={() => setNoteColor("#F09993")}
+          style={{ backgroundColor: "#F09993" }}
+        ></div>
+        <div
+          className="note-color-selector m-1"
+          onClick={() => setNoteColor("#E4DDE2")}
+          style={{ backgroundColor: "#E4DDE2" }}
+        ></div>
+        <div
+          className="note-color-selector m-1"
+          onClick={() => setNoteColor("#FFBB5C")}
+          style={{ backgroundColor: "#FFBB5C" }}
+        ></div>
+        <div
+          className="note-color-selector m-1"
+          onClick={() => setNoteColor("#85FFB1")}
+          style={{ backgroundColor: "#85FFB1" }}
+        ></div>
+      </div>
       <button className="btn-primary-confirm" onClick={saveNoteHandler}>
         Save Note
       </button>
