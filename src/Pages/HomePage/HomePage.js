@@ -6,6 +6,7 @@ import "./HomePage.css";
 import axios from "axios";
 import { AddNote } from "../AddNote/AddNote";
 import { useNavigate } from "react-router-dom";
+import { errorToast } from "../../Utils/ToastUtils/errorToast";
 
 function HomePage() {
   const { token } = useAuth();
@@ -18,7 +19,7 @@ function HomePage() {
       });
       setSavedNotes(notes.data.notes);
     } catch (error) {
-      alert("Seems Like you are note logged in, please log in!");
+      errorToast("Seems Like you are note logged in, please log in!");
       navigate("/login");
     }
   };

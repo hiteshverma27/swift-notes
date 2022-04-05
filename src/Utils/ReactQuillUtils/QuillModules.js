@@ -1,6 +1,6 @@
 const quillModules = {
   toolbar: [
-    ["bold", "italic", "underline", "strike", "image"], // toggled buttons
+    ["bold", "italic", "underline", "strike", "image", "video", "link"], // toggled buttons
     ["blockquote", "code-block"],
 
     [{ header: 1 }, { header: 2 }], // custom button values

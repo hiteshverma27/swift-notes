@@ -43,7 +43,7 @@ function Login() {
       setIsAuthenticated(true);
       successToast("Login Success!");
       navigate("/home");
-      console.log(userData.status);
+      console.log(userData.data.encodedToken);
     } catch (error) {
       errorToast("You are not registered, please sign up");
       console.log(error);
