@@ -43,6 +43,7 @@ function AddNote() {
         successToast("Note added successfully");
         setNote("");
         setTitle("");
+        setNoteColor("white");
       } catch (error) {
         successToast("Seems like you are note logged in, log in first!");
         navigate("/login");
@@ -79,6 +80,11 @@ function AddNote() {
         className="quill w-90per"
       />
       <div className="flex-wrap flex">
+        <div
+          className="note-color-selector m-1"
+          onClick={() => setNoteColor("white")}
+          style={{ backgroundColor: "white", border: "2px solid black" }}
+        ></div>
         <div
           className="note-color-selector m-1"
           onClick={() => setNoteColor("#5CCEFF")}
