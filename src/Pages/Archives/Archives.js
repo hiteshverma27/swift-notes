@@ -7,10 +7,11 @@ import axios from "axios";
 import { successToast } from "../../Utils/ToastUtils/successToast";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { errorToast } from "../../Utils/ToastUtils/errorToast";
 
 function Archives() {
   const { archiveNotes, setArchiveNotes, setSavedNotes } = useNote();
-  const { token } = useAuth();
+  const { token, isAuthenticated } = useAuth();
 
   const deleteArchiveNote = async (item) => {
     try {
@@ -20,7 +21,7 @@ function Archives() {
       setArchiveNotes(notes.data.archives);
       successToast("Note deleted from archive");
     } catch (error) {
-      console.log(error);
+      errorToast("Something went wrong!");
     }
   };
 
@@ -37,65 +38,82 @@ function Archives() {
       setArchiveNotes(notes.data.archives);
       successToast("Note restored");
     } catch (error) {
-      console.log(error);
+      errorToast("Something went wrong!");
     }
   };
   return (
     <>
       <SideNav />
       <div className="main-content flex-center-center flex-col ">
-        <h1>Archives</h1>
-        {archiveNotes.length === 0 ? (
+        {isAuthenticated ? (
           <>
-            <h2>No Archive notes</h2>
-            <div className="flex">
-              <Link to={"/home"}>
-                <button className="btn-primary-confirm m-1">Take a note</button>
-              </Link>
-              <Link to={"/notes"}>
-                <button className="btn-primary-confirm m-1">Saved Notes</button>
-              </Link>
-            </div>
+            <h1>Archives</h1>
+            {archiveNotes.length === 0 ? (
+              <>
+                <h2>No Archive notes</h2>
+                <div className="flex">
+                  <Link to={"/home"}>
+                    <button className="btn-primary-confirm m-1">
+                      Take a note
+                    </button>
+                  </Link>
+                  <Link to={"/notes"}>
+                    <button className="btn-primary-confirm m-1">
+                      Saved Notes
+                    </button>
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <div className="flex flex-wrap">
+                {archiveNotes.map((item) => (
+                  <div
+                    className="m-2 savednote-container w-70vw"
+                    key={item._id}
+                    style={{ backgroundColor: item.noteColor }}
+                  >
+                    <h2>{item.title}</h2>
+                    <ReactQuill
+                      key={item._id}
+                      theme="snow"
+                      className="quill"
+                      readOnly
+                      value={item.note}
+                    />
+                    <p>created - {item.date}</p>
+
+                    <div className="flex-center-center px-2">
+                      <button
+                        className=" m-2"
+                        onClick={() => restoreArchive(item)}
+                        title="Restore Note"
+                      >
+                        <span className="material-icons icon-s4">
+                          unarchive
+                        </span>
+                      </button>
+                      <button
+                        className="m-2"
+                        onClick={() => deleteArchiveNote(item)}
+                        title="Delete from archive"
+                      >
+                        <span className="material-icons icon-s4 color-red">
+                          delete
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </>
         ) : (
-          <div className="flex flex-wrap">
-            {archiveNotes.map((item) => (
-              <div
-                className="m-2 savednote-container w-70vw"
-                key={item._id}
-                style={{ backgroundColor: item.noteColor }}
-              >
-                <h2>{item.title}</h2>
-                <ReactQuill
-                  key={item._id}
-                  theme="snow"
-                  className="quill"
-                  readOnly
-                  value={item.note}
-                />
-                <p>created - {item.date}</p>
-
-                <div className="flex-center-center px-2">
-                  <button
-                    className=" m-2"
-                    onClick={() => restoreArchive(item)}
-                    title="Restore Note"
-                  >
-                    <span className="material-icons icon-s4">unarchive</span>
-                  </button>
-                  <button
-                    className="m-2"
-                    onClick={() => deleteArchiveNote(item)}
-                    title="Delete from archive"
-                  >
-                    <span className="material-icons icon-s4 color-red">
-                      delete
-                    </span>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+          <>
+            <h1>Login to see archived notes</h1>
+            <Link to={"/login"}>
+              <button className="btn-primary-confirm m-1">Login</button>
+            </Link>
+          </>
         )}
       </div>
     </>

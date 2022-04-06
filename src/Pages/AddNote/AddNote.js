@@ -7,13 +7,14 @@ import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./AddNote.css";
-import { quillModules } from "../../Utils/ReactQuillUtils/QuillModules";
+import { quillModules } from "../../Components/ReactQuillUtils/QuillModules";
 import { errorToast } from "../../Utils/ToastUtils/errorToast";
 
 function AddNote() {
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
   const [noteColor, setNoteColor] = useState();
+  const [tag, setTag] = useState([]);
 
   const { token } = useAuth();
 
@@ -33,6 +34,7 @@ function AddNote() {
               note: note,
               date: new Date(Date.now()).toLocaleString().split(","[0]),
               noteColor: noteColor,
+              tags: tag.map((item) => item.value),
             },
           },
           {
@@ -53,7 +55,11 @@ function AddNote() {
       ? errorToast("Neither of the fields can be empty!")
       : postNote();
   };
-
+  const tags = [
+    { id: 1, value: "Work" },
+    { id: 2, value: "School" },
+    { id: 3, value: "Teams" },
+  ];
   return (
     <div className="main-conten">
       <h1 className="m-2 ml-0">Add Note</h1>
@@ -66,6 +72,7 @@ function AddNote() {
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
+
       <ReactQuill
         placeholder="Start taking a note..."
         style={{ backgroundColor: noteColor }}
@@ -79,6 +86,21 @@ function AddNote() {
         modules={quillModules}
         className="quill w-90per"
       />
+      {tags.map((item) => (
+        <label key={item.id}>
+          <input
+            type={"checkbox"}
+            className="m-1"
+            value={item.value}
+            onClick={(e) =>
+              e.target.checked
+                ? setTag((prev) => [...prev, item])
+                : setTag((prev) => [prev.filter((item) => !item.id)])
+            }
+          />
+          {item.value}
+        </label>
+      ))}
       <div className="flex-wrap flex">
         <div
           className="note-color-selector m-1"

@@ -6,7 +6,7 @@ import "./SideNav.css";
 
 function SideNav() {
   const { savedNotes, archiveNotes } = useNote();
-  const { userData, isAuthenticated } = useAuth();
+  const { setIsAuthenticated, setToken } = useAuth();
   return (
     <>
       <div className="app-navigation flex-space_between-center flex-col py-8">
@@ -34,13 +34,13 @@ function SideNav() {
       <div className="user-badge flex-space_between-center flex-col py-8">
         <button
           className="flex-center-center p-2 "
-          title={
-            isAuthenticated
-              ? userData.firstName + userData.lastName
-              : "User Profile"
-          }
+          onClick={() => {
+            setToken("");
+            setIsAuthenticated(false);
+          }}
+          title="Logout"
         >
-          <span className="material-icons icon-s5 pr-1">person</span>{" "}
+          <span className="material-icons icon-s5 pr-1">logout</span>{" "}
         </button>
       </div>
     </>
