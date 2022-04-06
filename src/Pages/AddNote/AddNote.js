@@ -44,7 +44,6 @@ function AddNote() {
         setNote("");
         setTitle("");
       } catch (error) {
-        console.log(error);
         successToast("Seems like you are note logged in, log in first!");
         navigate("/login");
       }
@@ -70,19 +69,15 @@ function AddNote() {
         placeholder="Start taking a note..."
         style={{ backgroundColor: noteColor }}
         theme="snow"
-        onChange={(e) => setNote(e.replaceAll(`"`, ""))}
+        onChange={(e) =>
+          setTimeout(() => {
+            setNote(e.replaceAll(`"`, ""));
+          })
+        }
         value={note}
         modules={quillModules}
         className="quill w-90per"
       />
-      <label>
-        <input
-          type={"checkbox"}
-          value={"work"}
-          onClick={(e) => console.log(e.target.checked)}
-        />
-        Work
-      </label>
       <div className="flex-wrap flex">
         <div
           className="note-color-selector m-1"
