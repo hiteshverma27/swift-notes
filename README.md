@@ -7,7 +7,7 @@
 
 ## A notes app
 
-Swift Notes is a mordern notes taking app with various productive and helpful features.
+Swift Notes is a modern notes taking app with various productive and helpful features.
 
 ## 🛠 Made with
 
