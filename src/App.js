@@ -4,7 +4,14 @@ import Navigation from "./Components/Navigation/Navigation";
 import { toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
-import { Archives, HomePage, LandingPage, Login, SavedNotes } from "./Pages";
+import {
+  Archives,
+  HomePage,
+  LandingPage,
+  Login,
+  MarkDownEditor,
+  SavedNotes,
+} from "./Pages";
 import MockmanEs from "mockman-js";
 toast.configure();
 
@@ -18,6 +25,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/archives" element={<Archives />} />
         <Route path="/notes" element={<SavedNotes />} />
+        <Route path="/markdown" element={<MarkDownEditor />} />
         <Route path="/mock" element={<MockmanEs />} />
         <Route path="*" element={<MockmanEs />} />
       </Routes>

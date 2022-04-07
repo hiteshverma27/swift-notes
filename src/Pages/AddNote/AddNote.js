@@ -60,6 +60,7 @@ function AddNote() {
     { id: 2, value: "School" },
     { id: 3, value: "Teams" },
   ];
+
   return (
     <div className="main-conten">
       <h1 className="m-2 ml-0">Add Note</h1>
@@ -72,7 +73,6 @@ function AddNote() {
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
-
       <ReactQuill
         placeholder="Start taking a note..."
         style={{ backgroundColor: noteColor }}
