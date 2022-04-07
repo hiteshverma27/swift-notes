@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a9a923f2-16c7-46eb-9536-8cf1a5ee36a1/deploy-status)](https://app.netlify.com/sites/swift-notes/deploys)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Orca UI](https://img.shields.io/badge/SuperCharged%20by-Orca%20UI-%2300B2CA)
 
-## Available Scripts
 
-In the project directory, you can run:
+# Swift Notes
 
-### `yarn start`
+## A notes app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Swift Notes is a mordern notes taking app with various productive and helpful features.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠 Made with
 
-### `yarn test`
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![React](	https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+    
+## Technologies used
+- ReactJS
+- [Orca UI](https://orcaui.netlify.app/) component library
+- [Mockbee](https://mockbee.netlify.app/) for backend
+- React Router
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `yarn build`
+- Clean and minimilist UI.
+- Rich text editor.
+- Add color to your note
+- Markdown editor and preview.
+- Support for image upload in a note.
+- Support for embeded video player (video can be added by link)
+- Archive note
+- Delete note
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Mobile responsive
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![mobile (10)](https://user-images.githubusercontent.com/87027579/162256288-5ff683f3-74d1-459f-a5d6-cd1b0f5d4ef3.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Feature rich app
 
-### `yarn eject`
+![mobile (11)](https://user-images.githubusercontent.com/87027579/162258645-cbea064f-9314-4db7-95cf-4cf535db203b.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For support or feedback, email hitesh.verma2711@gmail.com
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Screenshots
+![Home Page](https://user-images.githubusercontent.com/87027579/162258080-6e511f4c-bbdc-4372-a6fd-3fcd49f74259.png)
 
-## Learn More
+![Add Note](https://user-images.githubusercontent.com/87027579/162258224-59cfe300-fd34-4d39-9810-c550aab824a4.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔗 Connect with me
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hitesh-verma-8727921b2//)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/hitesh27v)
+[![blogger](https://img.shields.io/badge/Blogger-FF5722?style=for-the-badge&logo=blogger&logoColor=white)](https://thetrailblazer2711.blogspot.com/)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
