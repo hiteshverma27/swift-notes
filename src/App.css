@@ -1,51 +1,39 @@
-.App {
-  text-align: center;
+@import url("https://orcaui.netlify.app/styles/main.css");
+:root{
+  --white: white;
+  --dark-mode-color:#1A202C;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-content{
+  height: calc(100vh - 6.6rem);
+  color: var(--white);
+  overflow-y: auto;
+  margin-left: 25vw;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: calc(100vw - 25vw);
+}
+.app-navigation{
+  top: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+*{
+  color: black;
+  /* background-color: var(--dark-mode-color); */
+  
 }
-
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
+.notes-container{
+  max-width: calc(100vw - 28rem);
+  word-wrap: break-word;
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+.savednote-container{
+  border: 2px solid black;
+  padding: 2rem;
+  height: max-content;
+  word-wrap: break-word;
+  max-width: max-content;
+  min-width: 20rem;
 }
