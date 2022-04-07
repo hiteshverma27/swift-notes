@@ -9,6 +9,17 @@
 
 Swift Notes is a modern notes taking app with various productive and helpful features.
 
+![Screenshot (26)](https://user-images.githubusercontent.com/87027579/162260613-23e6cc0f-aec0-4a16-a957-0e5ef4f3135e.png)
+
+
+
+## Table of Contents
+
+- [Technologies used](#technologies-used)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Connect with me](#-connect-with-me)
+
 ## 🛠 Made with
 
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -45,9 +56,9 @@ Swift Notes is a modern notes taking app with various productive and helpful fea
 For support or feedback, email hitesh.verma2711@gmail.com
 
 ## Screenshots
-![Home Page](https://user-images.githubusercontent.com/87027579/162258080-6e511f4c-bbdc-4372-a6fd-3fcd49f74259.png)
 
-![Add Note](https://user-images.githubusercontent.com/87027579/162258224-59cfe300-fd34-4d39-9810-c550aab824a4.png)
+![Home Page](https://user-images.githubusercontent.com/87027579/162260930-c1a27542-a2f3-4c85-9d63-8d93776f2ebf.png)
+![Saved Note](https://user-images.githubusercontent.com/87027579/162260959-a6167604-754e-467c-9570-4f3eb4c2c9c6.png)
 
 
 ## 🔗 Connect with me
