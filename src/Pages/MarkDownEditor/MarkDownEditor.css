@@ -1,0 +1,14 @@
+.react-markdown-container{
+    overflow-y: scroll;
+    border: 2px solid black;
+    height: 70vh;
+}
+.md-editor-container{
+    border: 2px solid black;
+}
+.md-editor-input{
+    height: calc(100% - 33px);
+}
+.react-md-component{
+    background-color: var(--lightgrey);
+}
