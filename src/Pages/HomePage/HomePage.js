@@ -1,11 +1,11 @@
 import React from "react";
-import SideNav from "../../Components/SideNav/SideNav";
 import { useAuth } from "../../Context/AuthContext";
 // import { useNote } from "../../Context/NoteContext";
 import "./HomePage.css";
 // import axios from "axios";
 import { AddNote } from "../AddNote/AddNote";
 import { Link } from "react-router-dom";
+import { SideNav } from "../../Components";
 // import { errorToast } from "../../Utils/ToastUtils/errorToast";
 
 function HomePage() {

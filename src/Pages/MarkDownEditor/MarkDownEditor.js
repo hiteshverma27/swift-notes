@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import SideNav from "../../Components/SideNav/SideNav";
 import { useAuth } from "../../Context/AuthContext";
 import "./MarkDownEditor.css";
 import gfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
+import { SideNav } from "../../Components";
 
 function MarkDownEditor() {
   const { isAuthenticated } = useAuth();

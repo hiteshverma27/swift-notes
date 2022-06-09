@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SideNav from "../../Components/SideNav/SideNav";
 import { useAuth } from "../../Context/AuthContext";
 import { useNote } from "../../Context/NoteContext";
 import axios from "axios";
@@ -8,6 +7,7 @@ import { successToast } from "../../Utils/ToastUtils/successToast";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { errorToast } from "../../Utils/ToastUtils/errorToast";
+import { SideNav } from "../../Components";
 
 function Archives() {
   const { archiveNotes, setArchiveNotes, setSavedNotes } = useNote();

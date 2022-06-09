@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Navigation from "./Components/Navigation/Navigation";
 import { toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +12,7 @@ import {
   SavedNotes,
 } from "./Pages";
 import MockmanEs from "mockman-js";
+import { Navigation } from "./Components";
 toast.configure();
 
 function App() {
