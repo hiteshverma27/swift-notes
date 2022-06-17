@@ -8,6 +8,8 @@ import "react-quill/dist/quill.snow.css";
 import { errorToast } from "../../Utils/ToastUtils/errorToast";
 import { Modal, SideNav } from "../../Components";
 import { quillModules } from "../../Components/ReactQuillUtils/QuillModules";
+import "./SavedNotes.css";
+
 function SavedNotes() {
   const { savedNotes, setArchiveNotes, setSavedNotes } = useNote();
   const { token, isAuthenticated } = useAuth();
@@ -16,6 +18,7 @@ function SavedNotes() {
   const [editNoteId, setEditNoteId] = useState("");
   const [noteColor, setNoteColor] = useState();
   const [tag, setTag] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const archiveNoteHandler = async (item) => {
@@ -105,7 +108,7 @@ function SavedNotes() {
     { id: 2, value: "School" },
     { id: 3, value: "Teams" },
   ];
-  console.log("dip");
+
   return (
     <>
       <SideNav />
@@ -179,7 +182,7 @@ function SavedNotes() {
           Save Note
         </button>
       </Modal>
-      <div className="main-content flex-center-center flex-col ">
+      <div className="main-content flex-center-center flex-col">
         {isAuthenticated ? (
           <>
             <h1>Saved Notes</h1>
@@ -200,65 +203,87 @@ function SavedNotes() {
                 </div>
               </>
             ) : (
-              <div className="flex flex-wrap ">
-                {savedNotes.map((item) => (
-                  <div key={item._id}>
-                    <div
-                      className="m-2 savednote-container w-70vw"
-                      style={{ backgroundColor: item.noteColor }}
-                    >
-                      <h2>{item.title}</h2>
-                      <ReactQuill
-                        key={item._id}
-                        theme="snow"
-                        readOnly
-                        value={item.note}
-                      />
-                      <p>created - {item.date}</p>
-                      {item.tags
-                        ? item.tags.map((item) => (
+              <>
+                <div className="flex-center-center w-100per">
+                  <input
+                    type={"search"}
+                    onChange={(e) => setSearchTerm(e.target.value.toString())}
+                    className="p-1 w-40per search-bar"
+                    placeholder="Search notes..."
+                  />
+                </div>
+                <div className="flex flex-wrap my-3">
+                  {savedNotes
+                    .filter(
+                      (item) =>
+                        item.title
+                          .toLowerCase()
+                          .includes(searchTerm.toLowerCase()) ||
+                        item.note
+                          .toLowerCase()
+                          .includes(searchTerm.toLowerCase())
+                    )
+                    .map((item) => (
+                      <div key={item._id}>
+                        <div
+                          className="m-2 savednote-container w-70vw"
+                          style={{ backgroundColor: item.noteColor }}
+                        >
+                          <h2>{item.title}</h2>
+                          <ReactQuill
+                            key={item._id}
+                            theme="snow"
+                            readOnly
+                            value={item.note}
+                          />
+                          <p>created - {item.date}</p>
+                          {item.tags
+                            ? item.tags.map((item) => (
+                                <button
+                                  className="mx-1"
+                                  style={{
+                                    backgroundColor: "orange",
+                                    borderRadius: "2rem",
+                                    border: "2px solid black",
+                                    padding: "0.5rem",
+                                  }}
+                                  key={item}
+                                >
+                                  {item}
+                                </button>
+                              ))
+                            : null}
+                          <div className="flex-center-center">
                             <button
-                              className="mx-1"
-                              style={{
-                                backgroundColor: "orange",
-                                borderRadius: "2rem",
-                                border: "2px solid black",
-                                padding: "0.5rem",
-                              }}
-                              key={item}
+                              onClick={() => archiveNoteHandler(item)}
+                              title="Archive Note"
                             >
-                              {item}
+                              <span className="material-icons icon-s4 m-1">
+                                archive
+                              </span>
                             </button>
-                          ))
-                        : null}
-                      <div className="flex-center-center">
-                        <button
-                          onClick={() => archiveNoteHandler(item)}
-                          title="Archive Note"
-                        >
-                          <span className="material-icons icon-s4">
-                            archive
-                          </span>
-                        </button>
-                        <button
-                          onClick={() => editNoteHandler(item)}
-                          title="Edit Note"
-                        >
-                          <span className="material-icons icon-s4">edit</span>
-                        </button>
-                        <button
-                          onClick={() => deleteNoteHandler(item)}
-                          title="Delete Note"
-                        >
-                          <span className="material-icons icon-s4 color-red">
-                            delete
-                          </span>
-                        </button>
+                            <button
+                              onClick={() => editNoteHandler(item)}
+                              title="Edit Note"
+                            >
+                              <span className="material-icons icon-s4 m-1">
+                                edit
+                              </span>
+                            </button>
+                            <button
+                              onClick={() => deleteNoteHandler(item)}
+                              title="Delete Note"
+                            >
+                              <span className="material-icons icon-s4 m-1 color-red">
+                                delete
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                    ))}
+                </div>
+              </>
             )}
           </>
         ) : (
