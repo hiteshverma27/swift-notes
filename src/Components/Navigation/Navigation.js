@@ -1,15 +1,21 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { guestModeHandler } from "../../Services/AuthServices/GuestLogin";
 import "./Navigation.css";
 
 function Navigation() {
-  const { isAuthenticated, userData, setIsAuthenticated, setUserData, setToken} = useAuth();
-  const currentLocation = useLocation()
+  const {
+    isAuthenticated,
+    userData,
+    setIsAuthenticated,
+    setUserData,
+    setToken,
+  } = useAuth();
+  const currentLocation = useLocation();
   return (
     <nav className="flex-space_between-center w-100per px-2 bg-white p-2 navbar">
-      <Link to={isAuthenticated?"/home":"/"}>
+      <Link to={isAuthenticated ? "/home" : "/"}>
         <h3 className="navbar bold flex-center-center mx-1">
           LightsOut{" "}
           <span className="mx-1 material-icons-outlined">video_library</span>
@@ -21,10 +27,9 @@ function Navigation() {
           <li className="mx-2 flex-center-center navbar">
             <button
               className="btn-primary-confirm"
-              onClick={(e) =>{
-                guestModeHandler(e, setToken, setUserData, setIsAuthenticated)
-                }
-              }
+              onClick={(e) => {
+                guestModeHandler(e, setToken, setUserData, setIsAuthenticated);
+              }}
             >
               One Tap login
             </button>
@@ -57,4 +62,4 @@ function Navigation() {
   );
 }
 
-export {Navigation};
+export { Navigation };
