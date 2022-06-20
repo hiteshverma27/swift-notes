@@ -5,3 +5,6 @@ export { LandingPage } from "./LandingPage/LandingPage";
 export { Login } from "./Login/Login";
 export { SavedNotes } from "./SavedNotes/SavedNotes";
 export { MarkDownEditor } from "./MarkDownEditor/MarkDownEditor";
+export { NotFound } from "./NotFound/NotFound";
+export { Signup } from "./Signup/Signup";
+export { Profile } from "./Profile/Profile";

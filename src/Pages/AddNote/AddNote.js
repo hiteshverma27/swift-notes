@@ -68,7 +68,7 @@ function AddNote() {
         <input
           type={"text"}
           placeholder={"Title"}
-          className="input m-0 w-90per"
+          className="input m-0 w-90per p-1 font-size-large font-weight-500"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
