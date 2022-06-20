@@ -216,11 +216,11 @@ function SavedNotes() {
                     <h3>Sort by</h3>
                     <label className="m-1">
                       <input type={"radio"} name="sort" onChange={e=>e.target.checked&&setSortBy("newest")}/>
-                      Newest first
+                      Newest notes first
                     </label>
                     <label className="m-1">
                       <input type={"radio"} name="sort" onChange={e=>e.target.checked&&setSortBy("oldest")}/>
-                      Oldest first
+                      Oldest notes first
                     </label>
                   </form>
                 </div>
