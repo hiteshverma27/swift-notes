@@ -19,6 +19,7 @@ function SavedNotes() {
   const [noteColor, setNoteColor] = useState();
   const [tag, setTag] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortBy, setSortBy] = useState("");
   const navigate = useNavigate();
 
   const archiveNoteHandler = async (item) => {
@@ -185,7 +186,7 @@ function SavedNotes() {
       <div className="main-content flex-center-center flex-col">
         {isAuthenticated ? (
           <>
-            <h1>Saved Notes</h1>
+            <h1 className="mb-2">Saved Notes</h1>
             {savedNotes.length === 0 ? (
               <>
                 <h2>No Notes saved</h2>
@@ -211,6 +212,17 @@ function SavedNotes() {
                     className="p-1 w-40per search-bar"
                     placeholder="Search notes..."
                   />
+                  <form className="mx-4 flex-center-center">
+                    <h3>Sort by</h3>
+                    <label className="m-1">
+                      <input type={"radio"} name="sort" onChange={e=>e.target.checked&&setSortBy("newest")}/>
+                      Newest first
+                    </label>
+                    <label className="m-1">
+                      <input type={"radio"} name="sort" onChange={e=>e.target.checked&&setSortBy("oldest")}/>
+                      Oldest first
+                    </label>
+                  </form>
                 </div>
                 <div className="flex flex-wrap my-3">
                   {savedNotes
@@ -222,6 +234,15 @@ function SavedNotes() {
                         item.note
                           .toLowerCase()
                           .includes(searchTerm.toLowerCase())
+                    )
+                    .sort((a,b)=>{
+                      if(sortBy==="newest"){
+                        return new Date(b.date) - new Date(a.date)
+                      }
+                      else{
+                        return new Date(a.date) - new Date(b.date)
+                      }
+                    }
                     )
                     .map((item) => (
                       <div key={item._id}>
@@ -235,15 +256,16 @@ function SavedNotes() {
                             theme="snow"
                             readOnly
                             value={item.note}
+                            modules={{ toolbar: [] }}
                           />
                           <p>created - {item.date}</p>
                           {item.tags
                             ? item.tags.map((item) => (
                                 <button
-                                  className="mx-1"
+                                  className="m-1"
                                   style={{
-                                    backgroundColor: "orange",
-                                    borderRadius: "2rem",
+                                    backgroundColor: "lightgrey",
+                                    borderRadius: "1rem",
                                     border: "2px solid black",
                                     padding: "0.5rem",
                                   }}
