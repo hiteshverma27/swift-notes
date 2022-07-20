@@ -1,13 +1,13 @@
-import React, { useRef, useState } from "react";
+import RichTextEditor from "@mantine/rte";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth, useNote } from "../../Context";
-import { successToast } from "../../Utils/ToastUtils";
+import React, { useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { errorToast } from "../../Utils/ToastUtils/errorToast";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal, SideNav } from "../../Components";
-import { quillModules } from "../../Components/ReactQuillUtils/QuillModules";
+import { useAuth, useNote } from "../../Context";
+import { successToast } from "../../Utils/ToastUtils";
+import { errorToast } from "../../Utils/ToastUtils/errorToast";
 import "./SavedNotes.css";
 
 function SavedNotes() {
@@ -116,7 +116,7 @@ function SavedNotes() {
 
       <Modal ref={modalRef}>
         <h2>{editNoteTitle}</h2>
-        <ReactQuill
+        <RichTextEditor
           placeholder="Start taking a note..."
           style={{ backgroundColor: noteColor }}
           theme="snow"
@@ -126,7 +126,6 @@ function SavedNotes() {
             })
           }
           value={editNoteInput}
-          modules={quillModules}
           className="quill w-90per"
         />
         {tags.map((item) => (
@@ -215,11 +214,23 @@ function SavedNotes() {
                   <form className="mx-4 flex-center-center">
                     <h3>Sort by</h3>
                     <label className="m-1">
-                      <input type={"radio"} name="sort" onChange={e=>e.target.checked&&setSortBy("newest")}/>
+                      <input
+                        type={"radio"}
+                        name="sort"
+                        onChange={(e) =>
+                          e.target.checked && setSortBy("newest")
+                        }
+                      />
                       Newest notes first
                     </label>
                     <label className="m-1">
-                      <input type={"radio"} name="sort" onChange={e=>e.target.checked&&setSortBy("oldest")}/>
+                      <input
+                        type={"radio"}
+                        name="sort"
+                        onChange={(e) =>
+                          e.target.checked && setSortBy("oldest")
+                        }
+                      />
                       Oldest notes first
                     </label>
                   </form>
@@ -235,15 +246,13 @@ function SavedNotes() {
                           .toLowerCase()
                           .includes(searchTerm.toLowerCase())
                     )
-                    .sort((a,b)=>{
-                      if(sortBy==="newest"){
-                        return new Date(b.date) - new Date(a.date)
+                    .sort((a, b) => {
+                      if (sortBy === "newest") {
+                        return new Date(b.date) - new Date(a.date);
+                      } else {
+                        return new Date(a.date) - new Date(b.date);
                       }
-                      else{
-                        return new Date(a.date) - new Date(b.date)
-                      }
-                    }
-                    )
+                    })
                     .map((item) => (
                       <div key={item._id}>
                         <div
