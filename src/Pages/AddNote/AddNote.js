@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import RichTextEditor from "@mantine/rte";
 import axios from "axios";
+import React, { useState } from "react";
+import "react-quill/dist/quill.snow.css";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { useNote } from "../../Context/NoteContext";
-import { successToast } from "../../Utils/ToastUtils/successToast";
-import { useNavigate } from "react-router-dom";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import "./AddNote.css";
-import { quillModules } from "../../Components/ReactQuillUtils/QuillModules";
 import { errorToast } from "../../Utils/ToastUtils/errorToast";
+import { successToast } from "../../Utils/ToastUtils/successToast";
+import "./AddNote.css";
 
 function AddNote() {
   const [title, setTitle] = useState("");
@@ -73,7 +72,8 @@ function AddNote() {
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
-      <ReactQuill
+
+      <RichTextEditor
         placeholder="Start taking a note..."
         style={{ backgroundColor: noteColor }}
         theme="snow"
@@ -83,7 +83,6 @@ function AddNote() {
           })
         }
         value={note}
-        modules={quillModules}
         className="quill w-90per"
       />
       {tags.map((item) => (
